@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="PT Mitra Nagari Digital: ekosistem digital untuk pendidikan, AI, dan kreativitas. Pimpinan: Masri.">
+<meta name="description" content="PT Mitra Nagari Digital: ekosistem digital untuk pendidikan, AI, dan kreativitas. Pimpinan: Masri. Termasuk media pembelajaran interaktif Jelajah Rupa.">
 <title>PT Mitra Nagari Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,6 +118,11 @@ section p:last-child{margin-bottom:0}
 .tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--muted)}
 .feature p{margin:0}.feature .note{font-size:14px;color:var(--muted)}
 .feature .btn{justify-self:start;margin-top:6px}
+.embed{margin-top:18px}
+.embed p{font-size:13px;color:var(--muted);margin:0 0 8px}
+.embed .frm{border:3px solid var(--black);background:var(--paper)}
+.embed iframe{display:block;width:100%;height:720px;border:0}
+@media (max-width:720px){.embed{display:none}}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
 .pillars h3{font-size:16px;margin:0 0 6px;font-weight:600}
 .pillars p{margin:0;color:var(--muted);font-size:15px}
@@ -139,7 +144,7 @@ footer{padding-block:20px 36px;color:var(--muted);font-size:14px}
   <div class="wrap">
     <a class="brand" href="#atas"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Mitra Nagari Digital</a>
     <nav class="nav" aria-label="Navigasi">
-      <a href="#profil">Profil</a><a href="#pimpinan">Pimpinan</a><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a class="keep" href="#kontak">Kontak</a>
+      <a href="#profil">Profil</a><a href="#pimpinan">Pimpinan</a><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a class="keep" href="#belajar">Belajar</a><a class="keep" href="#kontak">Kontak</a>
     </nav>
   </div>
   <div class="progress" id="progress" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -203,6 +208,20 @@ footer{padding-block:20px 36px;color:var(--muted);font-size:14px}
       <p class="note">Prototipe klik berisi data fiktif, dengan penilaian AI yang masih simulasi. Tahap berikutnya: unggah foto karya dan penilaian oleh model AI.</p>
       <a class="btn primary" href="https://lengayang.github.io/Guru-Seni-AI/">Buka prototipe</a>
     </article>
+  </section>
+
+  <section id="belajar">
+    <h2>Media pembelajaran</h2>
+    <div>
+      <article class="feature">
+        <span class="tag">Media interaktif</span>
+        <h3>Jelajah Rupa</h3>
+        <p>Media pembelajaran seni rupa untuk siswa SMA. Berisi profil, petunjuk, identitas, materi bergambar, latihan kuis dengan penjelasan di setiap jawaban, dan tombol lanjut ke sesi berikutnya.</p>
+        <p class="note">Sesi 1: Seni Rupa Dua Dimensi. Sesi 2: Seni Rupa Tiga Dimensi. Progres tersimpan di browser masing-masing siswa.</p>
+        <a class="btn primary" href="jelajah-rupa.html">Buka layar penuh</a>
+      </article>
+      <div class="embed"><p>Pratinjau. Gunakan tombol di atas untuk pengalaman layar penuh.</p><div class="frm"><iframe src="jelajah-rupa.html" title="Pratinjau media pembelajaran Jelajah Rupa" loading="lazy"></iframe></div></div>
+    </div>
   </section>
 
   <section id="cara-kerja">
