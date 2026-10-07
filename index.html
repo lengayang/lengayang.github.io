@@ -3,18 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Profil Masri: guru Seni Rupa, pengembang teknologi pendidikan, dan kreator konten. PT Mitra Nagari Digital.">
-<title>Profil Masri</title>
+<meta name="description" content="PT Mitra Nagari Digital: ekosistem digital untuk pendidikan, AI, dan kreativitas. Pimpinan: Masri.">
+<title>PT Mitra Nagari Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Public+Sans:wght@400;500;600&display=swap">
 <style>
-/* Layout: satu kolom editorial, label di kiri dan isi di kanan; pita marawa (hitam, emas, merah) sebagai pembatas dan pucuk rebung sebagai tepi bawah. */
+/* Layout: bilah atas lengket dengan pita progres marawa; hero dua kolom (nama perusahaan kiri, foto pimpinan berbingkai anyaman belah ketupat kanan); bagian berikutnya berlabel kiri dan isi kanan. */
 :root{
   --bg:#efeeea; --surface:#e6e4de; --fg:#1b1815; --muted:#5f5a52; --line:#cfccc3;
-  --red:#a8231b; --gold:#d9a21b; --black:#1b1815; --on-red:#ffffff;
+  --red:#a8231b; --gold:#d9a21b; --black:#1b1815; --on-red:#ffffff; --on-black:#f3efe6;
   --display:"Gloock","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -27,60 +28,105 @@
   --red:#e2583f; --gold:#e6b43c; --black:#0b0a09; --on-red:#1a0b08; color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65;padding-inline:max(16px,4vw)}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65}
 a{color:inherit}
-.wrap{max-width:960px;margin-inline:auto}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1000px;margin-inline:auto;padding-inline:max(16px,4vw)}
+
+/* Bilah atas */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:58px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.01em}
+.mark{display:grid;grid-template-rows:repeat(3,1fr);width:22px;height:22px}
+.mark i:nth-child(1){background:var(--black)}.mark i:nth-child(2){background:var(--gold)}.mark i:nth-child(3){background:var(--red)}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:var(--muted);padding-block:4px;background:linear-gradient(var(--gold),var(--gold)) left bottom/0 2px no-repeat;transition:background-size .3s var(--ease),color .2s}
+.nav a:hover{color:var(--fg);background-size:100% 2px}
+@media (max-width:720px){.nav a:not(.keep){display:none}}
+.progress{height:6px;display:grid;grid-template-rows:repeat(3,2px);border-bottom:1px solid var(--line)}
+.progress i{display:block;transform-origin:left;transform:scaleX(var(--p,0))}
+.progress i:nth-child(1){background:var(--black)}.progress i:nth-child(2){background:var(--gold)}.progress i:nth-child(3){background:var(--red)}
 
 /* Hero */
-.hero{padding-block:clamp(40px,9vw,96px) 0}
-.eyebrow{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;font-weight:600}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(64px,17vw,168px);line-height:.92;margin:0 0 22px;letter-spacing:-.01em}
-.lead{max-width:34em;font-size:clamp(18px,2.4vw,22px);line-height:1.5;margin:0 0 28px;text-wrap:pretty}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px}
-.btn{display:inline-block;padding:12px 22px;border-radius:4px;font-weight:600;text-decoration:none;font-size:15px;border:2px solid var(--fg)}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,6vw,72px);align-items:center;padding-block:clamp(36px,7vw,80px) clamp(36px,6vw,56px)}
+.eyebrow{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;font-weight:600}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,10.5vw,112px);line-height:.95;margin:0 0 22px;letter-spacing:-.01em}
+h1 span{display:block;overflow:hidden;padding-bottom:.08em}
+h1 span b{display:block;font-weight:400}
+h1 span:last-child b{color:var(--red)}
+.lead{max-width:30em;font-size:clamp(18px,2.2vw,21px);line-height:1.5;margin:0 0 28px;text-wrap:pretty}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:4px;font-weight:600;text-decoration:none;font-size:15px;border:2px solid var(--fg);transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
 .btn.primary{background:var(--red);border-color:var(--red);color:var(--on-red)}
-.btn:hover{transform:translateY(-1px)}
-@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 -2px var(--gold)}
+
+/* Bingkai foto pimpinan */
+.frame{position:relative;aspect-ratio:4/5;width:100%;max-width:400px;justify-self:center;perspective:900px}
+.frame::before{content:"";position:absolute;inset:20px -20px -20px 20px;background:var(--gold);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M14 1L27 14L14 27L1 14Z' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E") 0 0/28px 28px;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M14 1L27 14L14 27L1 14Z' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E") 0 0/28px 28px}
+.card{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .25s var(--ease)}
+.card img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block;background:var(--surface)}
+.card .bands{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-rows:8px 8px 8px}
+.card .bands i:nth-child(1){background:var(--black)}.card .bands i:nth-child(2){background:var(--gold)}.card .bands i:nth-child(3){background:var(--red)}
+.chip{position:absolute;left:-14px;bottom:44px;background:var(--black);color:var(--on-black);padding:10px 16px 11px;line-height:1.25;border-left:4px solid var(--gold)}
+.chip b{display:block;font-family:var(--display);font-weight:400;font-size:22px}
+.chip span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+@media (max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}.frame{max-width:340px;margin-right:20px;justify-self:start}}
 
 /* Pita marawa */
-.marawa{display:grid;grid-template-rows:14px 14px 14px}
-.marawa i:nth-child(1){background:var(--black)}
-.marawa i:nth-child(2){background:var(--gold)}
-.marawa i:nth-child(3){background:var(--red)}
+.marawa{display:grid;grid-template-rows:14px 14px 14px;transform-origin:left}
+.marawa i:nth-child(1){background:var(--black)}.marawa i:nth-child(2){background:var(--gold)}.marawa i:nth-child(3){background:var(--red)}
 
-/* Section */
-section{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:16px 40px;padding-block:56px;border-bottom:1px solid var(--line)}
+/* Gerak pembuka: hanya saat dimuat, semua kembali terlihat di akhir */
+@media (prefers-reduced-motion:no-preference){
+  h1 span b{animation:rise .9s var(--ease) backwards}
+  h1 span:nth-child(2) b{animation-delay:.12s}
+  h1 span:nth-child(3) b{animation-delay:.24s}
+  .eyebrow,.lead,.actions{animation:fade .8s var(--ease) .45s backwards}
+  .card{animation:reveal 1.1s var(--ease) .2s backwards}
+  .chip{animation:fade .8s var(--ease) 1s backwards}
+  .marawa{animation:wipe 1.2s var(--ease) .5s backwards}
+  .frame::before{animation:fade 1s var(--ease) .6s backwards}
+}
+@keyframes rise{from{transform:translateY(105%)}}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+@keyframes reveal{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+@keyframes wipe{from{transform:scaleX(0)}}
+
+/* Bagian */
+section{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:16px 40px;padding-block:56px;border-bottom:1px solid var(--line)}
 section>h2{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.15;margin:0}
 @media (max-width:720px){section{grid-template-columns:minmax(0,1fr);padding-block:40px}}
 section p{margin:0 0 14px;max-width:38em;text-wrap:pretty}
 section p:last-child{margin-bottom:0}
-
 .rows{list-style:none;margin:0;padding:0}
-.rows li{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:6px 28px;padding-block:16px;border-top:1px solid var(--line)}
-.rows li:first-child{border-top:0;padding-top:0}
-.rows b{font-weight:600}
-.rows span{color:var(--muted)}
+.rows li{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:6px 28px;padding:16px 0 16px 0;border-top:1px solid var(--line);position:relative;transition:padding-left .25s var(--ease)}
+.rows li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .25s var(--ease)}
+.rows li:first-child{border-top:0}
+.rows li:hover{padding-left:16px}
+.rows li:hover::before{transform:scaleY(1)}
+.rows b{font-weight:600}.rows span{color:var(--muted)}
 @media (max-width:720px){.rows li{grid-template-columns:minmax(0,1fr)}}
+.role{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--red);margin-bottom:6px}
+.guide{margin:18px 0 0;padding:16px 20px;background:var(--surface);border-left:6px solid var(--gold);font-family:var(--display);font-size:19px;line-height:1.4;max-width:34em}
+.guide small{display:block;font-family:var(--body);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 
-/* Proyek unggulan */
 .feature{background:var(--surface);border-left:6px solid var(--red);padding:22px 24px;display:grid;gap:10px}
 .feature h3{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;margin:0}
 .tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--muted)}
-.feature p{margin:0}
-.feature .note{font-size:14px;color:var(--muted)}
+.feature p{margin:0}.feature .note{font-size:14px;color:var(--muted)}
 .feature .btn{justify-self:start;margin-top:6px}
-
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
 .pillars h3{font-size:16px;margin:0 0 6px;font-weight:600}
 .pillars p{margin:0;color:var(--muted);font-size:15px}
 @media (max-width:720px){.pillars{grid-template-columns:minmax(0,1fr);gap:18px}}
-
-.links{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.links{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .links a{font-weight:600;text-underline-offset:4px;text-decoration-thickness:2px;text-decoration-color:var(--gold)}
+.links a:hover{text-decoration-color:var(--red)}
 .links span{color:var(--muted);font-size:14px;display:block;font-weight:400}
 
-/* Tepi pucuk rebung */
 .rebung{height:16px;margin-top:56px;background:var(--gold);
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16'%3E%3Cpath d='M0 16L16 0L32 16Z'/%3E%3C/svg%3E") repeat-x bottom/32px 16px;
   mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16'%3E%3Cpath d='M0 16L16 0L32 16Z'/%3E%3C/svg%3E") repeat-x bottom/32px 16px}
@@ -89,40 +135,67 @@ footer{padding-block:20px 36px;color:var(--muted);font-size:14px}
 
 </head>
 <body>
-<main class="wrap">
-  <header class="hero">
-    <p class="eyebrow">Guru Seni Rupa · Kreator konten · Pengembang teknologi pendidikan</p>
-    <h1>Masri</h1>
-    <p class="lead">Mengajar seni di SMA, membangun alat bantu belajar dengan AI, dan membawa budaya Minangkabau ke layar dan ruang kelas.</p>
-    <div class="actions">
-      <a class="btn primary" href="#proyek">Lihat proyek</a>
-      <a class="btn" href="#kontak">Hubungi</a>
-    </div>
-    <div class="marawa" aria-hidden="true"><i></i><i></i><i></i></div>
-  </header>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#atas"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Mitra Nagari Digital</a>
+    <nav class="nav" aria-label="Navigasi">
+      <a href="#profil">Profil</a><a href="#pimpinan">Pimpinan</a><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a class="keep" href="#kontak">Kontak</a>
+    </nav>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"><i></i><i></i><i></i></div>
+</header>
 
-  <section id="tentang">
-    <h2>Tentang</h2>
+<main class="wrap" id="atas">
+  <div class="hero">
     <div>
-      <p>Saya mengajar Seni Budaya dan Seni Rupa di SMA. Di luar kelas, saya membuat konten, menulis kode, dan mengelola sistem di VPS sendiri.</p>
-      <p>Dari ketiganya muncul satu pertanyaan yang sama: bagaimana teknologi bisa meringankan kerja guru tanpa menggantikan keputusan guru?</p>
-      <p>Usaha digital saya berjalan di bawah nama <b>PT Mitra Nagari Digital</b>.</p>
+      <p class="eyebrow">PT Mitra Nagari Digital</p>
+      <h1><span><b>Mitra</b></span><span><b>Nagari</b></span><span><b>Digital</b></span></h1>
+      <p class="lead">Ekosistem digital untuk pendidikan, AI, dan kreativitas, dengan sentuhan budaya Minangkabau.</p>
+      <div class="actions">
+        <a class="btn primary" href="#produk">Lihat produk</a>
+        <a class="btn" href="#kontak">Hubungi kami</a>
+      </div>
+    </div>
+    <div class="frame" id="frame">
+      <div class="card" id="card">
+        <img src="foto-pimpinan.webp" width="800" height="800" alt="Masri, Pimpinan PT Mitra Nagari Digital, berkemeja putih dengan ikat kepala kotak-kotak putih">
+        <div class="bands" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="chip"><b>Masri</b><span>Pimpinan</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="marawa" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <section id="profil">
+    <h2>Profil</h2>
+    <div>
+      <p>PT Mitra Nagari Digital mengembangkan produk dan layanan digital seputar pendidikan, kecerdasan buatan, kreativitas, dan teknologi informasi.</p>
+      <p>Kami membantu guru dan sekolah bekerja lebih ringan dengan teknologi yang praktis, mudah diikuti, dan aman dipakai.</p>
     </div>
   </section>
 
-  <section id="bidang">
-    <h2>Bidang kerja</h2>
+  <section id="pimpinan">
+    <h2>Pimpinan</h2>
+    <div>
+      <span class="role">Masri · Pimpinan</span>
+      <p>Guru Seni Budaya dan Seni Rupa di SMA, kreator konten, dan pengembang teknologi pendidikan. Pengalaman di kelas menjadi dasar setiap produk yang kami buat.</p>
+      <p class="guide"><small>Pertanyaan yang memandu kami</small>Bagaimana teknologi bisa meringankan kerja guru tanpa menggantikan keputusan guru?</p>
+    </div>
+  </section>
+
+  <section id="layanan">
+    <h2>Bidang usaha dan layanan</h2>
     <ul class="rows">
-      <li><b>Pendidikan seni</b><span>Mengajar Seni Budaya dan Seni Rupa di SMA, dengan aktivitas yang bisa langsung dipakai di kelas.</span></li>
       <li><b>Teknologi pendidikan dan AI</b><span>Aplikasi web dan mobile untuk guru, otomasi alur kerja, dan penerapan AI dalam pembelajaran.</span></li>
-      <li><b>Konten media sosial</b><span>Reels, TikTok, dan Facebook tentang pendidikan, AI, dan kreativitas.</span></li>
-      <li><b>Budaya Minangkabau</b><span>Karya visual dan musik yang memakai talempong, saluang, rabab, dan unsur tradisi lain pada konteks yang tepat.</span></li>
-      <li><b>Bisnis digital</b><span>Ekosistem produk digital seputar pendidikan, AI, dan teknologi informasi di bawah PT Mitra Nagari Digital.</span></li>
+      <li><b>Pelatihan AI untuk guru</b><span>Webinar dan kelas praktik memakai AI untuk perangkat ajar, soal, dan asesmen.</span></li>
+      <li><b>Perangkat ajar dan media seni</b><span>Modul, LKPD, rubrik, dan media pembelajaran Seni Budaya yang siap dipakai.</span></li>
+      <li><b>Web dan aplikasi sekolah</b><span>Digitalisasi administrasi dan pembelajaran, dari rancangan sampai pemasangan di server.</span></li>
+      <li><b>Konten kreatif edukasi</b><span>Video pendek, desain visual, dan storytelling untuk sekolah dan komunitas.</span></li>
     </ul>
   </section>
 
-  <section id="proyek">
-    <h2>Proyek</h2>
+  <section id="produk">
+    <h2>Produk</h2>
     <article class="feature">
       <span class="tag">Prototipe</span>
       <h3>GuruSeni AI</h3>
@@ -132,17 +205,7 @@ footer{padding-block:20px 36px;color:var(--muted);font-size:14px}
     </article>
   </section>
 
-  <section id="kerja-sama">
-    <h2>Bisa diajak bekerja sama</h2>
-    <ul class="rows">
-      <li><b>Pelatihan AI untuk guru</b><span>Webinar dan kelas praktik memakai AI untuk perangkat ajar, soal, dan asesmen.</span></li>
-      <li><b>Perangkat ajar dan media seni</b><span>Modul, LKPD, rubrik, dan media pembelajaran Seni Budaya yang siap dipakai.</span></li>
-      <li><b>Web dan aplikasi sekolah</b><span>Digitalisasi administrasi dan pembelajaran, dari rancangan sampai pemasangan di server.</span></li>
-      <li><b>Konten kreatif edukasi</b><span>Video pendek, desain visual, dan storytelling untuk sekolah dan komunitas.</span></li>
-    </ul>
-  </section>
-
-  <section id="pendekatan">
+  <section id="cara-kerja">
     <h2>Cara kerja</h2>
     <div class="pillars">
       <div><h3>Guru yang memutuskan</h3><p>AI membantu menyiapkan dan menganalisis. Penilaian dan keputusan akhir tetap di tangan guru.</p></div>
@@ -158,12 +221,34 @@ footer{padding-block:20px 36px;color:var(--muted);font-size:14px}
       <li><a href="https://instagram.com/mitranagari">Instagram @mitranagari</a><span>Karya dan kegiatan</span></li>
       <li><a href="https://www.tiktok.com/@mitranagari">TikTok @mitranagari</a><span>Konten pendek tentang pendidikan dan AI</span></li>
       <li><a href="https://github.com/lengayang">github.com/lengayang</a><span>Kode dan proyek terbuka</span></li>
-      <li><a href="https://prompt.masri.cloud">prompt.masri.cloud</a><span>Situs</span></li>
     </ul>
   </section>
 
   <div class="rebung" aria-hidden="true"></div>
-  <footer>© Masri · PT Mitra Nagari Digital</footer>
+  <footer>© PT Mitra Nagari Digital</footer>
 </main>
+
+<script>
+(function(){
+  var bars=document.querySelectorAll('#progress i'),ticking=false;
+  function upd(){
+    var h=document.documentElement,max=h.scrollHeight-h.clientHeight,p=max>0?Math.min(1,Math.max(0,(window.scrollY||h.scrollTop)/max)):0;
+    bars.forEach(function(b){b.style.setProperty('--p',p)});
+    document.getElementById('progress').style.setProperty('--p',p);
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+  window.addEventListener('resize',upd);upd();
+  var card=document.getElementById('card'),frame=document.getElementById('frame');
+  var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches,calm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(card&&fine&&!calm){
+    frame.addEventListener('mousemove',function(e){
+      var r=frame.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform='rotateY('+(x*7).toFixed(2)+'deg) rotateX('+(-y*7).toFixed(2)+'deg)';
+    });
+    frame.addEventListener('mouseleave',function(){card.style.transform=''});
+  }
+})();
+</script>
 </body>
 </html>
